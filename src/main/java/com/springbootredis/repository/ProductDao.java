@@ -3,6 +3,7 @@ package com.springbootredis.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +13,8 @@ import com.springbootredis.entity.Product;
 public class ProductDao {
     public static final String HASH_KEY = "Product";
 
-    // @Autowired
+    @Autowired
+    @Qualifier("redisTemplate")
     private RedisTemplate template;
 
     public Product save(Product product) {
